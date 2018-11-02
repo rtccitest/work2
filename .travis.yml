@@ -9,6 +9,6 @@ env:
 jobs:
  include:
  - state: test
-   script: gcc -c main.c && echo $TEST_CALL
+    script: gcc -c main.c && echo $TEST_CALL
  - state: deploy
-   script: echo "Deploy"
+    script: echo "Deploy"
