@@ -5,6 +5,6 @@ env:
  - TEST_CALL="FIRST CALL"
  - TEST_CALL="SECOND CALL"
  - TEST_CALL="THIRD CALL"
- - TEST_CALL="FOURTH CALL"
+
 
 script: gcc -c main.c && echo $TEST_CALL
