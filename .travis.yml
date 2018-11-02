@@ -1,8 +1,8 @@
 language: c
 
 env:
-	matrix:
-	- TEST_CALL="FIRST CALL"
- 	- TEST_CALL="SECOND CALL"
+ matrix:
+ - TEST_CALL="FIRST CALL"
+ - TEST_CALL="SECOND CALL"
 
 script: gcc -c main.c && echo $TEST_CALL
