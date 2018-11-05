@@ -3,7 +3,7 @@ sudo: required
 
 before_script:
  - docker build -t test/test .
- - docker run -ti -d -v `pwd`:/work -name integ test/test 
+ - docker run -ti -d -v `pwd`:/work --name integ test/test 
 
 env:
   matrix:
