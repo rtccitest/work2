@@ -1,9 +1,10 @@
 language: c
 
-matrix:
-  - TEST_CALL="FIRST CALL"
-  - TEST_CALL="SECOND CALL"
-  - TEST_CALL="THIRD CALL"
+env:
+  matrix:
+    - TEST_CALL="FIRST CALL"
+    - TEST_CALL="SECOND CALL"
+    - TEST_CALL="THIRD CALL"
 
 
 jobs:
