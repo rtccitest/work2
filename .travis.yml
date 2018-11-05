@@ -11,7 +11,8 @@ env:
   - TEST_CALL="SECOND CALL"
   - TEST_CALL="THIRD CALL"
 
-script: gcc -c main.c && echo $TEST_CALL			
+#script: gcc -c main.c && echo $TEST_CALL
+script: cat /etc/os-release
 
 jobs:
   include:
