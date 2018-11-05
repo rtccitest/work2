@@ -8,7 +8,7 @@ matrix:
 
 jobs:
   include:
-    - state: test     
+    - stage: test     
       script: gcc -c main.c && echo $TEST_CALL	
-    - state: deploy
+    - stage: deploy
       script: echo "Deploy"
