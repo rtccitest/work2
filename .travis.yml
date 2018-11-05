@@ -1,13 +1,11 @@
 language: c
 
-
-
 jobs:
   matrix:
-      - TEST_CALL="FIRST CALL"
-      - TEST_CALL="SECOND CALL"
-      - TEST_CALL="THIRD CALL"
-    include:
+    - TEST_CALL="FIRST CALL"
+    - TEST_CALL="SECOND CALL"
+    - TEST_CALL="THIRD CALL"
+      include:
         - state: test     
           script: gcc -c main.c && echo $TEST_CALL	
         - state: deploy
