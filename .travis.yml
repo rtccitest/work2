@@ -12,7 +12,9 @@ env:
   - TEST_CALL="THIRD CALL"
 
 #script: gcc -c main.c && echo $TEST_CALL
-script: cat /etc/os-release && ls tmp | cat
+script: cat /etc/os-release
+script: docker exec test/test gcc tmp/main.c
+script: docker exec test/test ./a.out
 
 jobs:
   include:
