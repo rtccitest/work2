@@ -14,8 +14,8 @@ env:
 #script: gcc -c main.c && echo $TEST_CALL
 script:
  - cat /etc/os-release
- - docker exec test/test cat /etc/os-release
- - docker exec test/test gcc tmp/main.c
+ - docker exec -ti test/test cat /etc/os-release
+ - docker exec -ti test/test gcc tmp/main.c
 
 jobs:
   include:
