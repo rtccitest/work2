@@ -1,6 +1,5 @@
 FROM ubuntu:18.04
 
 RUN cat /etc/os-release  \
-#    && apt-get update \
-#    && apt-get -y install build-essential \
-    && (cd tmp; ls > log.txt; cat log.txt)
+    && apt-get update \
+    && apt-get -y install build-essential
