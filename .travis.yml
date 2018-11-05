@@ -5,7 +5,7 @@ jobs:
     - stage: test
       matrix:
         include:
-	  env:
+          env:
             - TEST_CALL="FIRST CALL"
             - TEST_CALL="SECOND CALL"
             - TEST_CALL="THIRD CALL"
