@@ -3,7 +3,7 @@ sudo: required
 
 before_script:
  - docker build -t test/test .
- - docker run -ti -d -v `pwd`:/work  test/test 
+ - docker run -ti -d -v `pwd`:/work  -t integ test/test 
 
 env:
   matrix:
@@ -14,8 +14,8 @@ env:
 #script: gcc -c main.c && echo $TEST_CALL
 script:
  - cat /etc/os-release
- - docker exec -ti test/test cat /etc/os-release
- - docker exec -ti test/test gcc tmp/main.c
+ - docker exec -ti integ cat /etc/os-release
+ - docker exec -ti integ gcc tmp/main.c
 
 jobs:
   include:
