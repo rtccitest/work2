@@ -3,9 +3,9 @@ language: c
 jobs:
   include:
     - stage: test
-      env:
-        matrix:
-	  include:
+      matrix:
+        include:
+	  env:
             - TEST_CALL="FIRST CALL"
             - TEST_CALL="SECOND CALL"
             - TEST_CALL="THIRD CALL"
