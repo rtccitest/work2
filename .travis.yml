@@ -1,15 +1,13 @@
 language: c
 
-env:
-  matrix:
-    - TEST_CALL="FIRST CALL"
-    - TEST_CALL="SECOND CALL"
-    - TEST_CALL="THIRD CALL"
-
-
 jobs:
   include:
-    - stage: test     
+    - stage: test
+      env:
+        matrix:
+          - TEST_CALL="FIRST CALL"
+          - TEST_CALL="SECOND CALL"
+          - TEST_CALL="THIRD CALL"
       script: gcc -c main.c && echo $TEST_CALL	
     - stage: deploy
       script: echo "Deploy"
