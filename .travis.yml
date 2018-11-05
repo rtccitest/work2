@@ -15,8 +15,8 @@ env:
 script:
  - cat /etc/os-release
  - docker exec -ti integ cat /etc/os-release
- - docker exec -ti integ gcc work/tmp/main.c
- - docker exec -ti integ ./a.out
+ - docker exec -ti integ gcc -o work/release_app work/tmp/main.c
+ - ./release_app
  
 
 jobs:
