@@ -1,7 +1,6 @@
 language: c
-
-matrix:
-  env:
+env:
+  matrix:
   - TEST_CALL="FIRST CALL"
   - TEST_CALL="SECOND CALL"
   - TEST_CALL="THIRD CALL"
