@@ -1,4 +1,9 @@
 language: c
+sudo: required
+
+before_script:
+ - docker build -t test/test .
+ - docker run --rm -ti test/test "cat /etc/os-release"
 
 env:
   matrix:
