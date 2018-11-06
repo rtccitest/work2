@@ -2,9 +2,14 @@ language: c
 sudo: required
 
 before_script:
- - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
  - docker build -t test/test .
  - docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test 
+
+env:
+  global:
+    - GIT_COMMITTER_NAME = integ
+    - GIT_COMMITTER_EMAIL = sample.@hoge
+    - GIT_AUTHOR_NAME
 
 
 env:
@@ -20,7 +25,17 @@ script:
  - ./release_app
  
 
-jobs:
-  include:
-    - stage: deploy
-      script: echo "Deploy"
+after_success
+  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - git config --global user.email "example@example.com"
+  - git config --global user.name "example user"
+  - git clone git@github.com:rtcci/work2.git
+  - git add release_app
+  - git commit -m "release test"
+  - git push origin master
+
+#jobs:
+#  include:
+#    - stage: deploy
+#      script: echo "Deploy"
