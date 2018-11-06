@@ -36,7 +36,8 @@ after_success:
   - git clone git@github.com:rtcci/work2.git
   - git add release_app
   - git commit -m "release test"
-  - git push git@github.com:rtcci/work2.git
+  - git push origin master
+#  - git push git@github.com:rtcci/work2.git
 
 #jobs:
 #  include:
