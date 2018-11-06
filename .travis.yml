@@ -2,8 +2,10 @@ language: c
 sudo: required
 
 before_script:
+ - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
  - docker build -t test/test .
  - docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test 
+
 
 env:
   matrix:
