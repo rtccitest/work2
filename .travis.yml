@@ -34,9 +34,10 @@ after_success:
   - git config --global user.email "example@example.com"
   - git config --global user.name "tonboAkinori"
   - git clone git@github.com:rtcci/work2.git
+  - cp release_app work2
   - cd work2
   - ls -l 
-  - git add ../release_app	
+  - git add -A
   - git commit -m "release test"
   - git push origin master
 #  - git push git@github.com:rtcci/work2.git
