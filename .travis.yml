@@ -15,7 +15,7 @@ script:
  - docker exec -ti $CONTAINER_NAME cat /etc/os-release
  - docker exec -ti $CONTAINER_NAME ls
  - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION;./configure --prefix=/relase_tmp --program-suffix=$TARGET_VERSION"
- - docker exec -ti $CONTAINER_NAME bash -c "make; make install"
+ - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION; make; make install"
  - docker exec -ti $CONTAINER_NAME ls /release_tmp
  
 #after_success:
