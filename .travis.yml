@@ -8,7 +8,7 @@ env:
   
 script:
  - echo $TARGET_DIST $TARGET_VERSION
- - docker build -t ${TARGET_DIST}-${TARGET_VERSION} -f docker/Dockerfile-${TARGET_DIST}-${TARGET_VERSION}
+ - docker build -t ${TARGET_DIST}-${TARGET_VERSION} -f docker/Dockerfile-${TARGET_DIST}-${TARGET_VERSION} .
  - export CONTAINER_NAME=$TARGET_DIST-$TARGET_VERSION
  - echo $CONTAINER_NAME
  #- docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
