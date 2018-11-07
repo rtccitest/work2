@@ -13,6 +13,7 @@ script:
  - echo $CONTAINER_NAME
  - docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
  - docker exec -ti $CONTAINER_NAME cat /etc/os-release
+ - docker exec -ti $CONTAINER_NAME ls
  
 
  #- docker build -t test/test .
