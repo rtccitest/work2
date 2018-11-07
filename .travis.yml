@@ -1,45 +1,47 @@
 language: c
 sudo: required
 
-before_script:
- - docker build -t test/test .
- - docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test 
+#before_script:
 
-env:
-  global:
-    - GIT_COMMITTER_NAME = integ
-    - GIT_COMMITTER_EMAIL = sample.@hoge
-    - GIT_AUTHOR_NAME
+#env:
+#  matrix:
+#  - name: "ubuntu16.04"
+#  - DOCKER_FILE_NAME = "ubntu16.04"
+#  - DOCKER_FILE_NAME = "ubntu18.04"
+#  -
 
+DOCKER_FILE_NAME:
+  - ubuntu16.04
+  - ubuntu18.04
+  - centOS
 
-env:
-  matrix:
-  - TEST_CALL="FIRST CALL"
-  - TEST_CALL="SECOND CALL"
-  - TEST_CALL="THIRD CALL"
+FILE_VERSION_TAG
+  - 1.0
+  - 1.2
 
 script:
- - echo $TEST_CALL
- - docker exec -ti integ cat /etc/os-release
- - docker exec -ti integ gcc -o work/release_app work/tmp/main.c
- - ./release_app
+ - echo $DOCKER_FILE_NAME $FILE_VERSION_TAG
+ #- docker build -t test/test .
+ #- docker exec -ti integ cat /etc/os-release
+ #- docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test		
+ #- docker exec -ti integ gcc -o work/release_app work/tmp/main.c
+ #- ./release_app
  
 
 after_success:
 #  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
-  - cp id_rsa ~/.ssh/id_rsa
-  - chmod 600 ~/.ssh/id_rsa
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - git config --global user.email "example@example.com"
-  - git config --global user.name "tonboAkinori"
-  - git clone git@github.com:rtcci/work2.git
-  - cp release_app work2
-  - cd work2
-  - ls -l 
-  - git add -A
-  - git commit -m "release test"
-  - git push origin master
+#  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
+#  - cp id_rsa ~/.ssh/id_rsa
+#  - chmod 600 ~/.ssh/id_rsa
+#  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+#  - git config --global user.email "example@example.com"
+#  - git config --global user.name "tonboAkinori"
+#  - git clone git@github.com:rtcci/work2.git
+#  - cp release_app work2
+#  - cd work2
+#  - git add -A
+#  - git commit -m "release test"
+#  - git push origin master
 #  - git push git@github.com:rtcci/work2.git
 
 #jobs:
