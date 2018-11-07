@@ -1,31 +1,26 @@
 language: c
 sudo: required
 
-#before_script:
-
-#env:
-#  matrix:
-#  - name: "ubuntu16.04"
-#  - DOCKER_FILE_NAME = "ubntu16.04"
-#  - DOCKER_FILE_NAME = "ubntu18.04"
-#  -
-
 env:
   matrix:
-  - TARGET_DIST=ubuntu VERSION=1604
-  - TARGET_DIST=ubuntu VERSION=1804
-  - TARGET_DIST=centos VERSION=7
+  - TARGET_DIST=ubuntu TARGET_VERSION=1604
+  - TARGET_DIST=ubuntu TARGET_VERSION=1804
   
 script:
- - echo $TARGET_DIST $VERSION
+ - echo $TARGET_DIST $TARGET_VERSION
+ - docker build -t $TARGET_DIST-$TARGET_VERSION -f docker/Dockerfile-$TARGET_DIST-$TARGET_VERSION
+ - export CONTAINER_NAME=$TARGET_DIST-$TARGET_VERSION
+ #- docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
+ 
+ 
  #- docker build -t test/test .
+ #- docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test
  #- docker exec -ti integ cat /etc/os-release
- #- docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test		
  #- docker exec -ti integ gcc -o work/release_app work/tmp/main.c
  #- ./release_app
  
 
-after_success:
+#after_success:
 #  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 #  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
 #  - cp id_rsa ~/.ssh/id_rsa
