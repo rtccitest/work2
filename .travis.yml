@@ -13,28 +13,22 @@ script:
  - echo $CONTAINER_NAME
  - docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
  - docker exec -ti $CONTAINER_NAME cat /etc/os-release
- - docker exec -ti $CONTAINER_NAME ls
  - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION;./configure --prefix=/release_tmp --program-suffix=$TARGET_VERSION"
  - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION; make; make install"
- - docker exec -ti $CONTAINER_NAME ls /release_tmp/bin
  - ls $TRAVIS_BUILD_DIR/tmp_release/bin
  
 #after_success:
-#  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
-#  - cp id_rsa ~/.ssh/id_rsa
-#  - chmod 600 ~/.ssh/id_rsa
-#  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-#  - git config --global user.email "example@example.com"
-#  - git config --global user.name "tonboAkinori"
-#  - git clone git@github.com:rtcci/work2.git
-#  - cp release_app work2
-#  - cd work2
-#  - git add -A
-#  - git commit -m "release test"
-#  - git push origin master
-#  - git push git@github.com:rtcci/work2.git
+  - openssl aes-256-cbc -K $encrypted_52aae7318c98_key -iv $encrypted_52aae7318c98_iv -in id_rsa.enc -out id_rsa -d
+  - cp id_rsa ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email "example@example.com"
+  - git config --global user.name "tr-ci"
+  - git clone git@github.com:rtccitest/release_test.git
+  - cp $TRAVIS_BUILD_DIR/tmp_release/bin/* release_test
+  - git -C release_test add -A
+  - git -C release_test commit -m "release test"
+  - git -c release_test push origin master
 
-#jobs:
-#  include:
-#    - stage: deploy
-#      script: echo "Deploy"
+
+
