@@ -10,15 +10,16 @@ sudo: required
 #  - DOCKER_FILE_NAME = "ubntu18.04"
 #  -
 
-
-DOCKER_FILE_NAME:
-  - ubuntu16.04
-  - ubuntu18.04
-  - centOS
-FILE_VERSION_TAG:
-  - 1.0
-  - 1.2
-  - 1.4
+env:
+  matrix:
+    DOCKER_FILE_NAME:
+      - ubuntu16.04
+      - ubuntu18.04
+      - centOS
+    FILE_VERSION_TAG:
+      - 1.0
+      - 1.2
+      - 1.4
   
 script:
  - echo $DOCKER_FILE_NAME $FILE_VERSION_TAG
