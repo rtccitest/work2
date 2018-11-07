@@ -14,7 +14,7 @@ script:
  - docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
  - docker exec -ti $CONTAINER_NAME cat /etc/os-release
  - docker exec -ti $CONTAINER_NAME ls
- - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION;./configure --prefix=/relase_tmp --program-suffix=$TARGET_VERSION"
+ - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION;./configure --prefix=/release_tmp --program-suffix=$TARGET_VERSION"
  - docker exec -ti $CONTAINER_NAME bash -c "cd /integtest-$RTM_VERSION; make; make install"
  - docker exec -ti $CONTAINER_NAME ls /release_tmp
  
