@@ -24,7 +24,7 @@ after_success:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "example@example.com"
-  - git config --global user.name "tr-ci"
+  - git config --global user.name "rtccitest"
   - git clone git@github.com:rtccitest/release_test.git
   - cp $TRAVIS_BUILD_DIR/tmp_release/bin/* release_test
   - git -C release_test add -A
