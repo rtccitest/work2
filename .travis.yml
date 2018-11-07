@@ -14,14 +14,10 @@ script:
  - docker run -ti -d --name $CONTAINER_NAME -v $TRAVIS_BUILD_DIR/tmp_release:/release_tmp $CONTAINER_NAME
  - docker exec -ti $CONTAINER_NAME cat /etc/os-release
  - docker exec -ti $CONTAINER_NAME ls
+ - docker exec -ti $CONTAINER_NAME cd integtest-$RTM_VERSION;./configure --prefix=/relase_tmp --program-suffix=$TARGET_VERSION
+ - docker exec -ti $CONTAINER_NAME make; make install
+ - docker exec -ti $CONTAINER_NAME ls /release_tmp
  
-
- #- docker build -t test/test .
- #- docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test
-  #- docker exec -ti integ gcc -o work/release_app work/tmp/main.c
- #- ./release_app
- 
-
 #after_success:
 #  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 #  - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
