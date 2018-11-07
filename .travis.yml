@@ -12,17 +12,12 @@ sudo: required
 
 env:
   matrix:
-    DOCKER_FILE_NAME:
-      - ubuntu16.04
-      - ubuntu18.04
-      - centOS
-    FILE_VERSION_TAG:
-      - 1.0
-      - 1.2
-      - 1.4
+  - TARGET_DIST=ubuntu VERSION=1604
+  - TARGET_DIST=ubuntu VERSION=1804
+  - TARGET_DIST=centos VERSION=7
   
 script:
- - echo $DOCKER_FILE_NAME $FILE_VERSION_TAG
+ - echo $TARGET_DIST $VERSION
  #- docker build -t test/test .
  #- docker exec -ti integ cat /etc/os-release
  #- docker run -ti -d -v $TRAVIS_BUILD_DIR:/work --name integ test/test		
