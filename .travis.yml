@@ -20,9 +20,9 @@ script:
 
 
 after_success:
-  if: env(TARGET_DIST) = Src_build
+  if: branch = master
     - echo "after_success Src_build" 
-  if: env(TARGET_DIST) = Test
+  if: branch = master
     - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
     - cp id_rsa ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
@@ -36,7 +36,7 @@ after_success:
     - git add -A
     - git commit -m "release test"
     - git push
-  if: env(TARGET_DIST) = Deploy
+  if: branch = master
     - echo "after_success Deploy" 
 
 
