@@ -20,9 +20,9 @@ script:
 
 
 after_success:
-  if: $TRAVIS_BUILD_STAGE_NAME = Src_build
+  if: env(TRAVIS_BUILD_STAGE_NAME) = Src_build
     - echo "after_success Src_build" 
-  if: $TRAVIS_BUILD_STAGE_NAME = Test
+  if: env(TRAVIS_BUILD_STAGE_NAME) = Test
     - openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d
     - cp id_rsa ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
@@ -36,7 +36,7 @@ after_success:
     - git add -A
     - git commit -m "release test"
     - git push
-  if: $TRAVIS_BUILD_STAGE_NAME = Deploy
+  if: env(TRAVIS_BUILD_STAGE_NAME) = Deploy
     - echo "after_success Deploy" 
 
 
