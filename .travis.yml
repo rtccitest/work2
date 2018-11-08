@@ -24,7 +24,19 @@ after_success:
          echo "Src_Build";
        fi'
     - 'if [ $TRAVIS_BUILD_STAGE_NAME = "Test" ]; then
-         echo "Test";
+         openssl aes-256-cbc -K $encrypted_31d12b5c5a08_key -iv $encrypted_31d12b5c5a08_iv -in id_rsa.enc -out id_rsa -d;
+         cp id_rsa ~/.ssh/id_rsa;
+         chmod 600 ~/.ssh/id_rsa;
+         echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config;
+         git config --global user.email "example@example.com";
+         git config --global user.name "rtccitest";
+         git clone git@github.com:rtccitest/release_test.git;
+         cp $TRAVIS_BUILD_DIR/tmp_storage/bin/* release_test;
+         ls tmp_storage/bin;
+         cd release_test;
+         git add -A;
+         git commit -m "release test";
+         git push;
        fi'
     - 'if [ $TRAVIS_BUILD_STAGE_NAME = "Deploy" ]; then
          echo "Deploy";
@@ -44,8 +56,6 @@ after_success:
     #- git commit -m "release test"
     #- git push
  
-
-
 stages:
   - src_build
   - test
