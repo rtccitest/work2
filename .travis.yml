@@ -9,6 +9,8 @@ jobs:
   include:
     - stage: src_build
       script: echo "src_build"
+    - stage: test
+      script: echo "test"
     - stage: deploy
       script: echo "deploy"
 
