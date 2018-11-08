@@ -9,7 +9,11 @@ env:
 jobs:
   include:
     - stage: unit test
-      script: echo "state test"
+      env:
+        matrix:
+        - HOGE=111
+	- HOGE=222
+      script: echo "state test" $HOGE
     - stage: deploy
       script: echo "deploy"
 
