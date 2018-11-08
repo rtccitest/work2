@@ -14,6 +14,7 @@ jobs:
         - HOGE=111
         - HOGE=222
       script: echo "state test" $HOGE
+    - stage: test
     - stage: deploy
       script: echo "deploy"
 
