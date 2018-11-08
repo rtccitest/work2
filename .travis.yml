@@ -38,8 +38,8 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      script: echo "test"
+    - stage: src_build
+      script: echo "src_build"
     - stage: deploy
       script: echo "deploy"
 
