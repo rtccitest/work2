@@ -35,7 +35,7 @@ jobs:
         - git config --global user.name "rtccitest"
         - git clone git@github.com:rtccitest/release_test.git
         - cp $TRAVIS_BUILD_DIR/tmp_release/bin/* release_test
-        - ls release_test
+        - ls tmp_release/bin
         - cd release_test
         - git add -A
         - git commit -m "release test"
