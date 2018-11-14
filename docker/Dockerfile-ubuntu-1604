@@ -1,9 +1,0 @@
-FROM ubuntu:16.04
-
-ARG RTM_VERSION
-
-ADD integtest-$RTM_VERSION.tar.gz /
-
-RUN cat /etc/os-release  \
-    && apt-get update \
-    && apt-get -y install build-essential make
