@@ -69,5 +69,13 @@ jobs:
       script: echo "src_build"
     - stage: deploy
       script: echo "deploy job"
-        on:
+
+deploy:
+  -provider: script
+    script: echo "master"
+      on:
           branch: master
+  -provider: script
+    script: echo "test_branch"
+      on:
+          branch: test_branch
