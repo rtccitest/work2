@@ -71,11 +71,11 @@ jobs:
       script: echo "deploy job"
 
 deploy:
-  -provider: script
+  - provider: script
     script: echo "master"
-      on:
-          branch: master
-  -provider: script
+    on:
+      branch: master
+  - provider: script
     script: echo "test_branch"
-      on:
+    on:
           branch: test_branch
