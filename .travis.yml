@@ -58,7 +58,10 @@ after_success:
 stages:
   - src_build
   - test
-  - deploy
+  - deploy_master
+    if: branch = master
+  - deploy_test_branch
+    if: branch = test_branch
 
 
 jobs:
@@ -67,11 +70,4 @@ jobs:
       script: echo "src_build"
     - stage: deploy
       script: echo "deploy"
-
-
-
-
- 
-
-
 
