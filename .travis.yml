@@ -59,15 +59,19 @@ stages:
   - src_build
   - test
   - deploy_master
-    if: branch = master
+    on:
+        branch: master
   - deploy_test_branch
-    if: branch = test_branch
+    on:
+       branch: test_branch
 
 
 jobs:
   include:
     - stage: src_build
       script: echo "src_build"
-    - stage: deploy
-      script: echo "deploy"
+    - stage: deploy_master
+      script: echo "deploy_master"
+    - stage: deploy_test_branch
+      script: echo "deploy_test_branch"
 
