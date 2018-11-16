@@ -10,11 +10,11 @@ script:
   - echo $TARGET_DIST $TARGET_VERSION
   - 'if [ $TRAVIS_BRANCH = "master" ]; then
     echo "script master branch";
-    ./script_master.sh ;
+    bash script_master.sh ;
     fi'
   - 'if [ $TRAVIS_BRANCH = "test_branch" ]; then
     echo "script test branch";
-    ./script_test.sh ;
+    bash script_test.sh ;
     fi'
 
 after_success:
