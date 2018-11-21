@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Master Shell Script"
-echo "Work RTCCI"
+echo "Work RTCCI RTCCI"
