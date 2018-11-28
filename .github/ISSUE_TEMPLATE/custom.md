@@ -1,7 +1,7 @@
 ---
-name: 問い合わせ
+name: Custom issue template
 about: Describe this issue template's purpose here.
 
 ---
 
-＃問い合わせ内容
+
